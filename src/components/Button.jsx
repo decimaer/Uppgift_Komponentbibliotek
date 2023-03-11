@@ -1,4 +1,4 @@
-import styles from "./Button.css";
+import styles from "./Button.module.css";
 
 const Button = ({ children, color, hoverColor, textColor }) => {
 	const style = {
@@ -8,7 +8,9 @@ const Button = ({ children, color, hoverColor, textColor }) => {
 	};
 	return (
 		<>
-			<button style={style}>{children}</button>
+			<button className={styles.button} style={style}>
+				{children}
+			</button>
 		</>
 	);
 };
