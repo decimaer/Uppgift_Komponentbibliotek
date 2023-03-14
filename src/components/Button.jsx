@@ -1,6 +1,6 @@
 import styles from "./Button.module.css";
 
-const Button = ({ children, color, hoverColor, textColor }) => {
+const Button = ({ children, color, hoverColor, textColor, onClick }) => {
 	const style = {
 		backgroundColor: color,
 		"--hoverColor": hoverColor,
@@ -8,7 +8,7 @@ const Button = ({ children, color, hoverColor, textColor }) => {
 	};
 	return (
 		<>
-			<button className={styles.button} style={style}>
+			<button className={styles.button} style={style} onClick={onClick}>
 				{children}
 			</button>
 		</>

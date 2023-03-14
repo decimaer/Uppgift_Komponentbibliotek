@@ -1,0 +1,81 @@
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.75);
+	/* height: ; */
+	/* background: transparent; */
+	/* border: none; */
+}
+.dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+.lightboxContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2em;
+}
+
+.bigImageContainer {
+	/* position: relative; */
+}
+
+.fullImage {
+	width: auto;
+	height: 70vh;
+	border-radius: 15px;
+}
+
+.thumbContainer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2em;
+	width: 450px;
+}
+
+button {
+	cursor: pointer;
+}
+
+.buttonLeftRight {
+	background: white;
+	border: none;
+	border-radius: 50%;
+	padding: 0;
+	height: 56px;
+	width: 56px;
+}
+
+.buttonLeftRight:hover > svg path {
+	stroke: #ffab6a;
+}
+
+.buttonLeft {
+	position: absolute;
+	top: calc((550px - 56px) / 2);
+	left: -28px;
+}
+
+.buttonRight {
+	position: absolute;
+	top: calc((550px - 56px) / 2);
+	right: -28px;
+}
+
+.buttonClose {
+	align-self: flex-end;
+	margin-bottom: 1.5em;
+	padding: 0;
+	background: none;
+	border: none;
+	color: white;
+	height: 3em;
+	width: 3em;
+}
+.buttonClose:hover > svg path {
+	fill: #ffab6a;
+}
