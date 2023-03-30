@@ -90,7 +90,7 @@ function App() {
 				columnOrder={["company", "contact", "country"]}
 			/>
 			<p>
-				{"Example data taken from"}
+				{"Example data taken from "}
 				<a href="https://www.w3schools.com/html/html_tables.asp">
 					W3 schools.
 				</a>
