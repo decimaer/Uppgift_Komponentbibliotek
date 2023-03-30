@@ -3,6 +3,27 @@ import "./App.css";
 import Button from "./components/Button";
 import Dropdown from "./components/Dropdown";
 import Lightbox from "./components/Lightbox";
+import Table from "./components/Table";
+
+const tableData = {
+	company: [
+		"Alfreds Futterkiste",
+		"Centro comercial Moctezuma",
+		"Ernst Handel",
+		"Island Trading",
+		"Laughing Bacchus Winecellars",
+		"Magazzini Alimentari Riuniti",
+	],
+	contact: [
+		"Maria Anders",
+		"Francisco Chang",
+		"Roland Mendel",
+		"Helen Bennett",
+		"Yoshi Tannamuri",
+		"Giovanni Rovelli",
+	],
+	country: ["Germany", "Mexico", "Austria", "UK", "Canada", "Italy"],
+};
 
 const lightboxImages = [
 	{
@@ -43,6 +64,37 @@ function App() {
 			>
 				Click this button!
 			</Button>
+			<h2>Dropdown menu</h2>
+			<p>
+				Provide an array of objects with the keys value, item, id. Also a
+				callback function for onChange.
+			</p>
+			<Dropdown
+				items={[
+					{ value: "volvo", item: "volvo", id: "jdau09213" },
+					{ value: "saab", item: "saab", id: "098432jlkrew" },
+					{ value: "audi", item: "audi", id: "098432jke" },
+				]}
+				onChange={(e) => {
+					alert(`You have selected ${e.target.value}`);
+				}}
+			/>
+			<h2>Table</h2>
+			<p>
+				Takes an object with columns and returns it as an HTML table with
+				rows. An additional array is given to set the order of the columns
+				from left to right.
+			</p>
+			<Table
+				tableContents={tableData}
+				columnOrder={["company", "contact", "country"]}
+			/>
+			<p>
+				{"Example data taken from"}
+				<a href="https://www.w3schools.com/html/html_tables.asp">
+					W3 schools.
+				</a>
+			</p>
 			<h2>LightBox</h2>
 			<p>Provide an array of images with urls.</p>
 			<Button
@@ -60,21 +112,6 @@ function App() {
 					toggleLightBox={toggleLightBox}
 				/>
 			)}
-			<h2>Dropdown menu</h2>
-			<p>
-				Provide an array of objects with the keys value, item, id. Also a
-				callback function for onChange.
-			</p>
-			<Dropdown
-				items={[
-					{ value: "volvo", item: "volvo", id: "jdau09213" },
-					{ value: "saab", item: "saab", id: "098432jlkrew" },
-					{ value: "audi", item: "audi", id: "098432jke" },
-				]}
-				onChange={(e) => {
-					alert(`You have selected ${e.target.value}`);
-				}}
-			/>
 		</div>
 	);
 }
