@@ -20,10 +20,7 @@ const lightboxImages = [
 ];
 
 function App() {
-	const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
-
-	const lightboxRef = useRef(null);
 
 	const toggleLightBox = () => {
 		console.log(isOpen);
@@ -58,9 +55,7 @@ function App() {
 			</Button>
 			{isOpen && (
 				<Lightbox
-					// isLightboxOpen={isLightboxOpen}
 					images={lightboxImages}
-					lightboxRef={lightboxRef}
 					setIsOpen={setIsOpen}
 					toggleLightBox={toggleLightBox}
 				/>

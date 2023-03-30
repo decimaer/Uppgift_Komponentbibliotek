@@ -15,15 +15,39 @@
 }
 
 .bigImageContainer {
+	position: relative;
 	display: flex;
 	align-items: stretch;
 	max-width: 100vw;
+	min-width: 50vw;
+	min-height: 50vw;
 }
 
 .fullImage {
 	max-width: calc(100vw - (2 * 3em));
 	max-height: 70vh;
 	border-radius: 15px;
+}
+
+.loadingImage {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50vw;
+	height: 50vw;
+	font-size: 1em;
+}
+
+.loadingImage p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	background-color: rgba(0, 0, 0, 0.428);
+	border-radius: 1em;
+	padding: 0.5em;
 }
 
 .circleContainer {
@@ -50,10 +74,6 @@ button {
 	background-color: rgba(255, 255, 255, 0.109);
 }
 
-.buttonLeftRight:hover > svg path {
-	stroke: #ffab6a;
-}
-
 .buttonClose {
 	align-self: flex-end;
 	color: white;
@@ -76,4 +96,8 @@ button {
 
 .circleSelected {
 	background-color: white;
+}
+
+.hidden {
+	display: none;
 }

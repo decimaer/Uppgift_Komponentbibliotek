@@ -1,48 +1,30 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Lightbox.module.css";
 
-const ProductThumbnail = ({ image, targetIndex, currentIndex }) => {
-	return (
-		<button
-			className={`${styles.circle} ${
-				currentIndex === targetIndex && styles.circleSelected
-			}`}
-			id={image.id}
-		></button>
-	);
-};
-
-const Lightbox = function ({
-	images,
-	// isLightboxOpen,
-	// lightboxRef,
-	handleCloseLightbox,
-	isOpen,
-	setIsOpen,
-	toggleLightBox,
-}) {
+const Lightbox = function ({ images, isOpen, toggleLightBox }) {
 	const [index, setIndex] = useState(0);
+	const [imgIsLoaded, setImgIsLoaded] = useState(false);
 
-	// console.log(isLightboxOpen);
-	// lightboxRef.current.showModal();
+	// remove scroll on body
+	document.body.style.overflow = "hidden";
 
-	useEffect(() => {
-		// lightboxRef.current.showModal();
-	}, []);
+	const handleCloseLightbox = () => {
+		if (!isOpen) document.body.style.overflow = "visible";
+
+		toggleLightBox();
+	};
 
 	const handleSelectImage = (event) => {
-		console.log(images);
-
 		const targetId = event.target.id;
 		const index = images.findIndex((image) => image.id === targetId);
 
-		console.log(targetId, index);
 		if (index === -1) return;
 
 		setIndex(index);
 	};
 
 	const handleImageCarousel = (event) => {
+		setImgIsLoaded(false);
 		const length = images.length;
 		let newIndex = index + Number(event.currentTarget.dataset.direction);
 
@@ -53,41 +35,50 @@ const Lightbox = function ({
 	};
 
 	return (
-		<div
-			className={`${styles.backdrop} ${!isOpen && styles.closed}`}
-			// ref={lightboxRef}
-		>
+		<div className={`${styles.backdrop} ${!isOpen && styles.closed}`}>
 			<div className={styles.lightboxContainer}>
-				<button onClick={toggleLightBox} className={styles.buttonClose}>
+				<button
+					onClick={handleCloseLightbox}
+					className={styles.buttonClose}
+				>
 					x
 				</button>
 				<div className={styles.bigImageContainer}>
 					<button
 						onClick={handleImageCarousel}
 						data-direction={-1}
-						className={`${styles.buttonLeftRight} ${styles.buttonLeft}`}
+						className={`${styles.buttonLeftRight} ${
+							!imgIsLoaded && styles.hidden
+						}`}
 					>
 						{"<"}
 					</button>
 					<img
 						src={images[index].src}
 						alt=""
-						className={styles.fullImage}
+						className={`${styles.fullImage}`}
+						onLoad={() => setImgIsLoaded(true)}
 					/>
+					<div
+						className={`${styles.loadingImage} ${
+							imgIsLoaded && styles.hidden
+						}`}
+					>
+						<p>Loading image...</p>
+					</div>
 					<button
 						onClick={handleImageCarousel}
 						data-direction={1}
-						className={`${styles.buttonLeftRight} ${styles.buttonRight}`}
+						className={`${styles.buttonLeftRight} ${
+							!imgIsLoaded && styles.hidden
+						}`}
 					>
 						{">"}
-
-						{/* <RightArrowIcon /> */}
 					</button>
 				</div>
 				<div className={styles.circleContainer} onClick={handleSelectImage}>
-					{/* {images.map()} */}
 					{images.map((image, i) => (
-						<ProductThumbnail
+						<ImageSelect
 							image={image}
 							targetIndex={index}
 							currentIndex={i}
@@ -97,6 +88,17 @@ const Lightbox = function ({
 				</div>
 			</div>
 		</div>
+	);
+};
+
+const ImageSelect = ({ image, targetIndex, currentIndex }) => {
+	return (
+		<button
+			className={`${styles.circle} ${
+				currentIndex === targetIndex && styles.circleSelected
+			}`}
+			id={image.id}
+		></button>
 	);
 };
 
