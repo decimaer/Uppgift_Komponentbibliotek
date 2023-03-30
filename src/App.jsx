@@ -62,6 +62,7 @@ function App() {
 					images={lightboxImages}
 					lightboxRef={lightboxRef}
 					setIsOpen={setIsOpen}
+					toggleLightBox={toggleLightBox}
 				/>
 			)}
 			<h2>Dropdown menu</h2>
