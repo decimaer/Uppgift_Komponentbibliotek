@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import "./App.css";
 import Button from "./components/Button";
+import Dropdown from "./components/Dropdown";
 import Lightbox from "./components/Lightbox";
 
 const lightboxImages = [
@@ -33,11 +34,20 @@ function App() {
 		<div className="App">
 			<h1>Component Library</h1>
 			<h2>Button</h2>
-			<p>Set the button background and hover colors and text color.</p>
-			<Button color="red" hoverColor="lightcoral" textColor="white">
+			<p>
+				Set the button background and hover colors and text color, and a
+				callback function for the onClick.
+			</p>
+			<Button
+				color="red"
+				hoverColor="lightcoral"
+				textColor="white"
+				onClick={() => alert("You have clicked the button")}
+			>
 				Click this button!
 			</Button>
 			<h2>LightBox</h2>
+			<p>Provide an array of images with urls.</p>
 			<Button
 				onClick={toggleLightBox}
 				color="rgb(75, 75, 75)"
@@ -54,6 +64,21 @@ function App() {
 					setIsOpen={setIsOpen}
 				/>
 			)}
+			<h2>Dropdown menu</h2>
+			<p>
+				Provide an array of objects with the keys value, item, id. Also a
+				callback function for onChange.
+			</p>
+			<Dropdown
+				items={[
+					{ value: "volvo", item: "volvo", id: "jdau09213" },
+					{ value: "saab", item: "saab", id: "098432jlkrew" },
+					{ value: "audi", item: "audi", id: "098432jke" },
+				]}
+				onChange={(e) => {
+					alert(`You have selected ${e.target.value}`);
+				}}
+			/>
 		</div>
 	);
 }
