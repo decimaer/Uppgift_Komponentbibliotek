@@ -2,9 +2,9 @@ import styles from "./Button.module.css";
 
 const Button = ({ children, color, hoverColor, textColor, onClick }) => {
 	const style = {
-		backgroundColor: color,
-		"--hoverColor": hoverColor,
-		color: textColor,
+		"--backgroundColor": color ? color : "dimgray",
+		"--hoverColor": hoverColor ? hoverColor : "gray",
+		"--textColor": textColor ? textColor : "white",
 	};
 	return (
 		<>

@@ -4,6 +4,8 @@
 	border-radius: 0.5em;
 	cursor: pointer;
 	font-weight: bold;
+	background-color: var(--backgroundColor);
+	color: var(--textColor);
 }
 
 .button:hover {

@@ -11,4 +11,6 @@ By Hampus Dufberg Töttrup
 
 ## Demo page
 
-For demo and description of components, visit:
+For demo and description of components, visit: https://oblako.dufberg.se:444/komponentbibliotek/
+
+## Testing with vitest and react testing library

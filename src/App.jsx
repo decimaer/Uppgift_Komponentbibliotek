@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import Button from "./components/Button";
-import Dropdown from "./components/Dropdown";
-import Lightbox from "./components/Lightbox";
-import Table from "./components/Table";
+import Button from "./components/Button/Button";
+import Dropdown from "./components/Dropdown/Dropdown";
+import Lightbox from "./components/Lightbox/Lightbox";
+import Table from "./components/Table/Table";
 
 const tableData = {
 	company: [
@@ -99,9 +99,9 @@ function App() {
 			<p>Provide an array of images with urls.</p>
 			<Button
 				onClick={toggleLightBox}
-				color="rgb(75, 75, 75)"
+				/* 				color="rgb(75, 75, 75)"
 				hoverColor="gray"
-				textColor="white"
+				textColor="white" */
 			>
 				Click to open lightbox
 			</Button>
