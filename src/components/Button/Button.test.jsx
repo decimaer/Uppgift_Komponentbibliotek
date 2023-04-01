@@ -14,7 +14,7 @@ describe("Button", () => {
 			"red"
 		);
 
-		screen.debug();
+		// screen.debug();
 	});
 
 	// Text Color
@@ -27,33 +27,41 @@ describe("Button", () => {
 			"red"
 		);
 
-		screen.debug();
+		// screen.debug();
 	});
 
 	// Hover
 	it("renders button element with correct hover color, when button is hovered", async () => {
 		render(<Button hoverColor="red" />);
-		const button = screen.getByRole("button");
 
-		await userEvent.hover(button);
+		const button = screen.getByRole("button");
 
 		expect(window.getComputedStyle(button)._values["--hoverColor"]).toBe(
 			"red"
 		);
-		screen.debug();
+		// screen.debug();
 	});
 
 	// Text Content
 	it("renders button with correct text content", () => {
 		render(<Button>Text</Button>);
 
-		const button = screen.getByRole("button");
-		console.log(
-			getComputedStyle(button).getPropertyValue("background-color")
-		);
-
 		expect(screen.getByText("Text")).toBeInTheDocument();
 
-		screen.debug();
+		// screen.debug();
+	});
+
+	// onClick
+	it("calls callback function when button is clicked", async () => {
+		const onClick = vi.fn();
+
+		render(<Button onClick={onClick} />);
+
+		const button = screen.getByRole("button");
+
+		await userEvent.click(button);
+
+		expect(onClick).toHaveBeenCalledOnce();
+		// screen.debug();
 	});
 });
