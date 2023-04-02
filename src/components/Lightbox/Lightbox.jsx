@@ -76,7 +76,12 @@ const Lightbox = function ({ images, isOpen, toggleLightBox }) {
 						{">"}
 					</button>
 				</div>
-				<div className={styles.circleContainer} onClick={handleSelectImage}>
+				<div
+					className={`${styles.circleContainer} ${
+						!imgIsLoaded && styles.hidden
+					}`}
+					onClick={handleSelectImage}
+				>
 					{images.map((image, i) => (
 						<ImageSelect
 							image={image}

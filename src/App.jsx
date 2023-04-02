@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
 import Dropdown from "./components/Dropdown/Dropdown";
@@ -44,7 +44,6 @@ function App() {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleLightBox = () => {
-		console.log(isOpen);
 		setIsOpen(!isOpen);
 	};
 
